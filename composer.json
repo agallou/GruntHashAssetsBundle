@@ -1,0 +1,11 @@
+{
+    "name": "agallou/grunt-hash-assets-bundle",
+    "type": "symfony-bundle",
+    "description": "",
+    "keywords": ["Grunt", "Assets"],
+    "license": "MIT",
+    "autoload": {
+        "psr-0": { "Agallou\\GruntHashAssetsBundle": "" }
+    },
+    "target-dir": "Agallou/GruntHashAssetsBundle"
+}
