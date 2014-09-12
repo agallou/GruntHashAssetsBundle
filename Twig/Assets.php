@@ -87,6 +87,6 @@ class Assets extends \Twig_Extension
      */
     public function getName()
     {
-        return 'afup_barometre_twig_assets';
+        return 'grunt_hash_assets_twig';
     }
 }
