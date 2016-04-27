@@ -6,6 +6,8 @@ use Symfony\Component\Finder\Finder;
 
 class Assets extends \Twig_Extension
 {
+  constant HASH_PATTERN = '\.[0-9a-f]{10}';
+
     /**
      * @var string
      */
@@ -43,8 +45,9 @@ class Assets extends \Twig_Extension
      */
     public function gruntAsset($filename)
     {
-        $pattern = vsprintf('%s*.%s', array(
+        $pattern = vsprintf('%s%s\.%s', array(
             pathinfo($filename, PATHINFO_FILENAME),
+            self::HASH_PATTERN,
             pathinfo($filename, PATHINFO_EXTENSION),
         ));
 
