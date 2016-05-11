@@ -6,7 +6,7 @@ use Symfony\Component\Finder\Finder;
 
 class Assets extends \Twig_Extension
 {
-  constant HASH_PATTERN = '\.[0-9a-f]{10}';
+  const HASH_PATTERN = '\.[0-9a-f]{16}';
 
     /**
      * @var string
@@ -45,7 +45,7 @@ class Assets extends \Twig_Extension
      */
     public function gruntAsset($filename)
     {
-        $pattern = vsprintf('%s%s\.%s', array(
+        $pattern = vsprintf('/%s%s.%s/i', array(
             pathinfo($filename, PATHINFO_FILENAME),
             self::HASH_PATTERN,
             pathinfo($filename, PATHINFO_EXTENSION),
@@ -70,11 +70,11 @@ class Assets extends \Twig_Extension
         $files = $finder->files()->name($pattern)->in($this->assetsDir . '/' . $subDir);
 
         if (0 === count($files)) {
-            throw new \Exception(sprintf("Asset file not found", $pattern));
+            throw new \Exception(sprintf("Asset file not found $pattern", $pattern));
         }
 
         if (count($files) > 1) {
-            throw new \Exception('There should not have more than one file in the assets dir');
+            throw new \Exception(sprintf("There should not have more than one file in the assets dir $pattern", $pattern));
         }
 
         $compiledFile = null;
