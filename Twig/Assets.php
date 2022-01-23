@@ -3,8 +3,10 @@
 namespace Agallou\GruntHashAssetsBundle\Twig;
 
 use Symfony\Component\Finder\Finder;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class Assets extends \Twig_Extension
+class Assets extends AbstractExtension
 {
     /**
      * @var string
@@ -32,7 +34,7 @@ class Assets extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('grunt_asset', array($this, 'gruntAsset')),
+            new TwigFunction('grunt_asset', array($this, 'gruntAsset')),
         );
     }
 

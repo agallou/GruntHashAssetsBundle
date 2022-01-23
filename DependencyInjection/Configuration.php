@@ -12,13 +12,13 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('grunt_hash_assets');
+        $treeBuilder = new TreeBuilder('grunt_hash_assets');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
                 ->scalarNode('assets_dir')
-                    ->defaultValue('%kernel.root_dir%/../web/assets/')
+                    ->defaultValue('%kernel.project_dir%/public/assets/')
                 ->end()
                 ->scalarNode('assets_base_path')
                     ->defaultValue('/assets')
